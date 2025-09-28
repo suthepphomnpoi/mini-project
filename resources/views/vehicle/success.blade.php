@@ -93,7 +93,11 @@
 
 
 
+
+
     <style scoped>
+
+        
 /* Card */
 .card {
     border: 1px solid #ddd;
@@ -286,5 +290,7 @@
     border-radius: 12px;
 }
 </style>
+
+
 
 @endsection

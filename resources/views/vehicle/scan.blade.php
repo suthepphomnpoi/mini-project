@@ -27,7 +27,7 @@
                         <p class="mb-0">ผู้โดยสาร : <strong>9 คน</strong></p>
                     </div>
                     <div class="mt-3 text-center">
-                        <a href="{{ route('confirm') }}" button class="btn btn-dark px-5 py-2">เริ่มงาน</a></button>
+                        <a href="{{ route('success') }}" button class="btn btn-dark px-5 py-2">เริ่มงาน</a></button>
                     </div>
                 </div>
             </div>
