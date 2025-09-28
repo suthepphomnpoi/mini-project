@@ -40,4 +40,11 @@ class UserAuthController extends Controller
             ->with('error', 'อีเมลหรือรหัสผ่านไม่ถูกต้อง');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('auth.users.login');
+    }
 }

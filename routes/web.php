@@ -27,9 +27,11 @@ Route::middleware('guest:employee')->group(function () {
     });
 });
 
+
 Route::middleware('user')->group(function () {
     Route::get('/', [SearchController::class, 'index'])->name('search.form');
     Route::get('/search/result', [SearchController::class, 'search'])->name('search');
     Route::get('/routes/all', [SearchController::class, 'allRoutes'])->name('routes.all');
     Route::get('/places', [PlaceController::class, 'index'])->name('places.index');
+    Route::post('/auth/users/logout', [UserAuthController::class, 'logout'])->name('auth.users.logout');
 });

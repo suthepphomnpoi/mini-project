@@ -16,8 +16,17 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">Bus Reservation</a>
-            <div class="ms-auto">
-                <span>Hi, Sirawit</span>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                @php($user = Auth::guard('web')->user())
+                @if($user)
+                    <span>สวัสดี, {{ $user->first_name ?? $user->email }}</span>
+                    <form action="{{ route('auth.users.logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-box-arrow-right"></i> ออกจากระบบ
+                        </button>
+                    </form>
+                @endif
             </div>
         </div>
     </nav>
