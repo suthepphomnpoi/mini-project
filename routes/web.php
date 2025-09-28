@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Auth\DriverAuthController;
-
+use App\Http\Controllers\ScanController;
 
 Route::middleware('guest:web')->group(function () {
     Route::prefix('auth')->group(function () {
@@ -34,4 +34,9 @@ Route::middleware('user')->group(function () {
     Route::get('/routes/all', [SearchController::class, 'allRoutes'])->name('routes.all');
     Route::get('/places', [PlaceController::class, 'index'])->name('places.index');
     Route::post('/auth/users/logout', [UserAuthController::class, 'logout'])->name('auth.users.logout');
+
+    Route::get('/scan', [ScanController::class, 'scan'])->name('scan');
+    Route::get('/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
+    Route::get('/scan/success', [ScanController::class, 'success'])->name('success');
+    Route::get('/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
 });
