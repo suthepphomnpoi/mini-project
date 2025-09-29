@@ -9,18 +9,18 @@ class ScanController extends Controller
 {
     public function scan()
     {
-    return view('vehicle.scan');
+    return view('driverfront.scan');
     }
     public function cancel()
     {
-    return view('vehicle.cancel');
+    return view('driverfront.cancel');
     }
     public function success()
     {
-    return view('vehicle.success');
+    return view('driverfront.success');
     }
     public function confirm()
     {
-    return view('vehicle.confirm');
+    return view('driverfront.confirm');
     }
 }

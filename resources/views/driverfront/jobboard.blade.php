@@ -32,18 +32,15 @@
                         </div>
 
                         <div class="col-12 col-md-3 d-flex align-items-center justify-content-md-end mt-2 mt-md-0">
-                            @if (!$item['received'])
-                                <button 
-                                    type="button"
-                                    class="btn btn-receive me-2 px-4 btn-receive-job" 
-                                    data-id="{{ $item['id'] }}">
-                                    รับงาน
-                                </button>
+                           @if (!$item['received'])
+                                <form action="{{ route('drivers.receive', $item['id']) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success btn-receive-job">รับงาน</button>
+                                </form>
                             @else
-                                <a href="{{ url('/drivers/details') }}" class="btn btn-outline-primary me-2 px-4">
-                                    รายละเอียด
-                                </a>
+                                <a href="{{ route('drivers.details', $item['id']) }}" class="btn btn-outline-primary">รายละเอียด</a>
                             @endif
+
                         </div>
 
 

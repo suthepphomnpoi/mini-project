@@ -7,7 +7,10 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Auth\DriverAuthController;
 use App\Http\Controllers\DashboardControllor;
+use App\Http\Controllers\JobboardController;
+use App\Http\Controllers\JobboardControllor;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\SeatController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware('guest:web')->group(function () {
@@ -45,8 +48,9 @@ Route::middleware('user')->group(function () {
     Route::get('/scan/success', [ScanController::class, 'success'])->name('success');
     Route::get('/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
 
-    Route::get('/drivers/schedule', [DashboardControllor::class, 'index'])->name('drivers.schedule');
-    Route::post('/drivers/schedule/{id}/receive', [DashboardControllor::class, 'receiveJob'])->name('drivers.receive');
+    Route::get('/drivers/schedule', [JobboardController::class, 'index'])->name('drivers.schedule');
+    Route::post('/drivers/schedule/{id}/receive', [JobboardController::class, 'receiveJob'])->name('drivers.receive');
+    Route::get('/drivers/details/{id}', [JobboardController::class, 'show'])->name('drivers.details');
 });
 
 // Protected driver test page to verify auth:employee middleware

@@ -126,43 +126,7 @@
 
 
     //
-    document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.btn-receive-job');
-
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const id = this.getAttribute('data-id');
-
-            fetch(`/drivers/schedule/${id}/receive`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Accept': 'application/json',
-                },
-            })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('ไม่สามารถรับงานได้');
-                }
-                return res.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    // ✅ เปลี่ยนปุ่มเป็น "รายละเอียด"
-                    this.outerHTML = `
-                        <a href="/drivers/details" class="btn btn-outline-primary me-2 px-4">
-                            รายละเอียด
-                        </a>
-                    `;
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                alert('เกิดข้อผิดพลาดในการรับงาน');
-            });
-        });
-    });
-});
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
