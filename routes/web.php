@@ -37,6 +37,8 @@ Route::middleware('user')->group(function () {
     Route::get('/routes/all', [SearchController::class, 'allRoutes'])->name('routes.all');
     Route::get('/places', [PlaceController::class, 'index'])->name('places.index');
     Route::post('/auth/users/logout', [UserAuthController::class, 'logout'])->name('auth.users.logout');
+    Route::get('/seat', [SeatController::class, 'seat'])->name('seat');
+    
 
     Route::get('/scan', [ScanController::class, 'scan'])->name('scan');
     Route::get('/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
