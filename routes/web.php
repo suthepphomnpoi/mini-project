@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Auth\DriverAuthController;
+use App\Http\Controllers\DashboardControllor;
 use App\Http\Controllers\ScanController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::middleware('guest:web')->group(function () {
     Route::prefix('auth')->group(function () {
@@ -39,4 +41,7 @@ Route::middleware('user')->group(function () {
     Route::get('/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
     Route::get('/scan/success', [ScanController::class, 'success'])->name('success');
     Route::get('/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
+
+    Route::get('/drivers/schedule', [DashboardControllor::class, 'index'])->name('drivers.schedule');
+    Route::post('/drivers/schedule/{id}/receive', [DashboardControllor::class, 'receiveJob'])->name('drivers.receive');
 });
