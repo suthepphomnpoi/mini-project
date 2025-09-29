@@ -17,6 +17,7 @@ Route::middleware('guest:web')->group(function () {
     });
 });
 
+
 // Guest routes for drivers (use guest:employee to check employee guard)
 Route::middleware('guest:employee')->group(function () {
     Route::prefix('auth')->group(function () {
@@ -34,4 +35,10 @@ Route::middleware('user')->group(function () {
     Route::get('/routes/all', [SearchController::class, 'allRoutes'])->name('routes.all');
     Route::get('/places', [PlaceController::class, 'index'])->name('places.index');
     Route::post('/auth/users/logout', [UserAuthController::class, 'logout'])->name('auth.users.logout');
+});
+
+// Protected driver test page to verify auth:employee middleware
+Route::middleware('auth:employee')->group(function () {
+    Route::get('/drivers/test', [DriverAuthController::class, 'test'])->name('drivers.test');
+    Route::post('/auth/drivers/logout', [DriverAuthController::class, 'logout'])->name('auth.drivers.logout');
 });
