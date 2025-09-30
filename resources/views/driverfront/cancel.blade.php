@@ -22,7 +22,7 @@
                         <p class="mb-0"><strong>จาก :</strong> มหาวิทยาลัยเทคโนโลยีมหานคร</p>
                         <p class="mb-0">⬇</p>
                         <p class="mb-0"><strong>ถึง :</strong> มหาวิทยาลัยเทคโนโลยีมหานคร</p>
-                        <p class="mb-0">รถทะเบียน : <strong>สย 2591</strong></p>
+                        <p class="mb-0">รถทะเบียน : <strong>{{ $jib['license'] }}</strong></p>
                         <p class="mb-0">ผู้โดยสาร : <strong>9 คน</strong></p>
                     </div>
                     <div class="arrow-group">

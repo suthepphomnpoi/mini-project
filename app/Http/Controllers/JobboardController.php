@@ -45,7 +45,7 @@ class JobboardController extends Controller
         return redirect()->route('drivers.schedule')->with('success', 'รับงานเรียบร้อยแล้ว');
     }
 
-    public function show($id)
+    public function show($id, $page = 'scan')
     {
         $trip = MpTrip::with(['vehicle.type', 'route'])->findOrFail($id);
 
@@ -58,9 +58,25 @@ class JobboardController extends Controller
         'license' => optional($trip->vehicle)->license_plate ?? '-',
         'passenger' => $trip->capacity . ' คน',
         'time' => $trip->depart_time,
+        
     ];
-        return view('driverfront.scan', compact('job'));
+        //return view('driverfront.scan', compact('job'));
 
-    }
-  
+     switch ($page) {
+        case 'scan':
+            return view('driverfront.scan', compact('job'));
+        case 'success':
+            return view('driverfront.success', compact('job'));
+        case 'cancel':
+            return view('driverfront.cancel', compact('job'));
+        default:
+            return view('driverfront.confirm', compact('job'));
+        }
+    }    
 }
+
+    
+
+   
+  
+

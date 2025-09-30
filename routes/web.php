@@ -44,13 +44,14 @@ Route::middleware('user')->group(function () {
     
 
     Route::get('/drivers/schedule/scan', [ScanController::class, 'scan'])->name('scan');
-    Route::get('/drivers/schedule/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
-    Route::get('/drivers/schedule/scan/success', [ScanController::class, 'success'])->name('success');
-    Route::get('/drivers/schedule/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
+    // Route::get('/drivers/schedule/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
+    // Route::get('/drivers/schedule/scan/success', [ScanController::class, 'success'])->name('success');
+    // Route::get('/drivers/schedule/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
 
     Route::get('/drivers/schedule', [JobboardController::class, 'index'])->name('drivers.schedule');
     Route::post('/drivers/schedule/{id}/receive', [JobboardController::class, 'receiveJob'])->name('drivers.receive');
-    Route::get('/drivers/details/{id}', [JobboardController::class, 'show'])->name('drivers.details');
+    Route::get('/drivers/schedule/scan/{id}', [JobboardController::class, 'show'])->name('drivers.details');
+    
 });
 
 // Protected driver test page to verify auth:employee middleware
