@@ -15,7 +15,7 @@
                         <button class="btn btn-outline-primary btn-sm">สแกน QR Code</button>
                     </div>
                     <h5 class="fw-bold">
-                        เวลาออกรถ <span class="text-dark">9:30 น.</span>
+                        เวลาออกรถ <span class="text-dark">{{ $job['time'] }}</span>
                     </h5>
                     <hr />
                     <div>
@@ -23,8 +23,8 @@
                         <p class="mb-0"><strong>จาก :</strong> มหาวิทยาลัยเทคโนโลยีมหานคร</p>
                         <p class="mb-0">⬇</p>
                         <p class="mb-0"><strong>ถึง :</strong> มหาวิทยาลัยเทคโนโลยีมหานคร</p>
-                        <p class="mb-0">รถทะเบียน : <strong>สย 2591</strong></p>
-                        <p class="mb-0">ผู้โดยสาร : <strong>9 คน</strong></p>
+                        <p class="mb-0">รถทะเบียน : <strong>{{ $job['license'] }}</strong></p>
+                        <p class="mb-0">ผู้โดยสาร : <strong>{{ $job['passenger'] }}</strong></p>
                     </div>
                     <div class="mt-3 text-center">
                         <a href="{{ route('success') }}" button class="btn btn-dark px-5 py-2">เริ่มงาน</a></button>
@@ -57,7 +57,7 @@
 
         <!-- กล่องสถานะผู้โดยสาร -->
         <div class="card mt-3 p-3">
-            <h6 class="fw-bold">ผู้โดยสารทั้งหมด 9 คน</h6>
+            <h6 class="fw-bold">ผู้โดยสารทั้งหมด {{ $job['passenger'] }}</h6>
             <div class="row text-center mt-2">
                 <div class="col-md-4">
                     <div class="status-box success">

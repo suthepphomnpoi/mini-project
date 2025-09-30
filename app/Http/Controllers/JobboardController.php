@@ -11,8 +11,8 @@ class JobboardController extends Controller
     {
         // ดึงงานที่ service_date >= วันนี้ พร้อมข้อมูล vehicle + type
         $trips = MpTrip::with(['vehicle.type', 'route'])
-            //->where('service_date', '>=', now()->toDateString())
-            ->orderBy('service_date', 'asc')
+            
+            //->orderBy('service_date', 'asc')
             ->get();
 
         // แปลงข้อมูลสำหรับแสดงหน้า View
@@ -47,7 +47,20 @@ class JobboardController extends Controller
 
     public function show($id)
     {
-        // จำลองหน้ารายละเอียด
-        return "รายละเอียดงานของ ID: " . $id;
+        $trip = MpTrip::with(['vehicle.type', 'route'])->findOrFail($id);
+
+    // จัดรูปข้อมูลเหมือนตอน index แต่เฉพาะตัวเดียว
+    $job = [
+        'id' => $trip->trip_id,
+        'route' => optional($trip->route)->name ?? 'ไม่ระบุเส้นทาง',
+        'path' => '-', // mockup ไว้ก่อน
+        'type' => optional(optional($trip->vehicle)->type)->name ?? 'ไม่ระบุ',
+        'license' => optional($trip->vehicle)->license_plate ?? '-',
+        'passenger' => $trip->capacity . ' คน',
+        'time' => $trip->depart_time,
+    ];
+        return view('driverfront.scan', compact('job'));
+
     }
+  
 }

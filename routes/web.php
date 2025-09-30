@@ -43,10 +43,10 @@ Route::middleware('user')->group(function () {
     Route::get('/seat', [SeatController::class, 'seat'])->name('seat');
     
 
-    Route::get('/scan', [ScanController::class, 'scan'])->name('scan');
-    Route::get('/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
-    Route::get('/scan/success', [ScanController::class, 'success'])->name('success');
-    Route::get('/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
+    Route::get('/drivers/schedule/scan', [ScanController::class, 'scan'])->name('scan');
+    Route::get('/drivers/schedule/scan/cancel', [ScanController::class, 'cancel'])->name('cancel');
+    Route::get('/drivers/schedule/scan/success', [ScanController::class, 'success'])->name('success');
+    Route::get('/drivers/schedule/scan/confirm', [ScanController::class, 'confirm'])->name('confirm');
 
     Route::get('/drivers/schedule', [JobboardController::class, 'index'])->name('drivers.schedule');
     Route::post('/drivers/schedule/{id}/receive', [JobboardController::class, 'receiveJob'])->name('drivers.receive');
